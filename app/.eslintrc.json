@@ -18,7 +18,7 @@
         "react"
     ],
     "rules": {
-        "semi": "off",
+        "semi": [ "error", "never" ],
         "react/function-component-definition": "off",
         "import/no-cycle": "off",
         "import/no-unresolved": "off",

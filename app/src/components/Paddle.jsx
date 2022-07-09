@@ -30,4 +30,4 @@ const Paddle = () => {
   )
 }
 
-export default Paddle;
+export default Paddle

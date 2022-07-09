@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import CSSVars from '../constants';
+import CSSVars from '../constants'
 
 const GameContainer = styled.div`
   position: absolute;
@@ -9,6 +9,6 @@ const GameContainer = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-`;
+`
 
 export default GameContainer

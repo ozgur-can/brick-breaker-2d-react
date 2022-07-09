@@ -4,7 +4,7 @@ import Paddle from './components/Paddle'
 import WelcomeScreen from './screens/WelcomeScreen'
 
 function App() {
-  const [isStarted, setStart] = React.useState(false);
+  const [isStarted, setStart] = React.useState(false)
   return (
     <GameContainer>
       {isStarted ? <WelcomeScreen setStart={setStart} /> : <Paddle />}
