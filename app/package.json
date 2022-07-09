@@ -1,39 +1,31 @@
 {
-  "name": "app",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "brick-breaker-2d",
+  "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "dev": "webpack serve --mode development",
-    "build": "webpack --mode production"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^14.14.41",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.3",
-    "@types/styled-components": "^5.1.9",
-    "@types/webpack": "^5.28.0",
-    "@types/webpack-dev-server": "^3.11.3",
-    "css-loader": "^5.2.4",
-    "file-loader": "^6.2.0",
-    "img-loader": "^3.0.2",
-    "sass": "^1.32.11",
-    "sass-loader": "^11.0.1",
-    "style-loader": "^2.0.0",
-    "ts-loader": "^9.1.1",
-    "ts-node": "10.8.1",
-    "typescript": "^4.2.4",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.35.1",
-    "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint 'src/**/*.{js,jsx}'",
+    "l-fix": "eslint --fix 'src/**/*.{js,jsx}'"
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "styled-components": "^5.2.3"
+    "@react-spring/web": "^9.4.5",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-spring": "^9.4.5",
+    "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "vite": "^2.9.9"
   }
 }
