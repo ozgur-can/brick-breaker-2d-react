@@ -6,6 +6,7 @@ const CSSVars = {
   ballHeight: 15,
   ballBorderSize: 2,
   ballBorderColor: 'black',
+  ballSpeed: -1,
 }
 
 export default CSSVars
