@@ -3,10 +3,11 @@ const CSSVars = {
   paddleWidth: 100,
   containerWidth: 500,
   containerHeight: 600,
-  ballHeight: 15,
-  ballBorderSize: 2,
+  ballHeight: 17,
+  ballBorderSize: 0,
   ballBorderColor: 'black',
-  ballSpeed: -1,
+  ballSpeedX: -1,
+  ballSpeedY: -1,
 }
 
 export default CSSVars
