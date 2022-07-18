@@ -37,7 +37,7 @@ function collisionStrategy(circle, item) {
   return isColliding
 }
 
-export default class RectangleGameObject extends BaseGameObject {
+export default class CircleGameObject extends BaseGameObject {
   constructor({
     width,
     height,

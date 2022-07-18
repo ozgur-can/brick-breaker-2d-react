@@ -12,7 +12,7 @@ export default class CollisionMap {
   * @returns {Boolean}
   */
   register({
-    itemId, width, height, position, shape = 'rectangle',
+    itemId, width, height, position, shape = 'circle',
   }) {
     if (this.items[itemId]) {
       console.warn(`Item ${itemId} is already registered`)
