@@ -29,7 +29,7 @@ const gameLoop = (ballRef) => {
   }
 
   if (collisionMap.isColliding) {
-    switch (collisionMap.isColliding.dir) {
+    switch (collisionMap.isColliding.side) {
       case 'D':
       case 'U':
         ballRef.current.changeYDir()

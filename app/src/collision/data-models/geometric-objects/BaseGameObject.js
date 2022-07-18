@@ -12,7 +12,7 @@ export default class BaseGameObject {
     this.position = position
   }
 
-  collidesWith(gameObject) {
-    return this.collisionStrategy(this, gameObject)
+  collidesWith(gameObject, itemType) {
+    return this.collisionStrategy(this, gameObject, itemType)
   }
 }

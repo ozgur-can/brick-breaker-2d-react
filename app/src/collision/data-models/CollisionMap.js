@@ -12,20 +12,28 @@ export default class CollisionMap {
   * @returns {Boolean}
   */
   register({
-    itemId, width, height, position, shape = 'circle',
+    itemId, width, height, position, shape = 'circle', ref, type,
   }) {
     if (this.items[itemId]) {
       console.warn(`Item ${itemId} is already registered`)
       return false
     }
-    const shapeModel = shapeFactory(shape, { width, height, position })
+    const shapeModel = shapeFactory(shape, {
+      width, height, position, ref, type,
+    })
     this.items[itemId] = {
       itemId,
       shapeModel,
       subscribers: [],
+      ref,
+      type,
     }
     this.checkCollisions(itemId)
     return true
+  }
+
+  unregister(itemId) {
+    delete this.items[itemId]
   }
 
   notifyItemSubscribers(item, otherItem) {
@@ -55,8 +63,12 @@ export default class CollisionMap {
       if (itemId === otherItemId) {
         continue
       }
-      const collision = item.shapeModel.collidesWith(otherItem.shapeModel)
+      const collision = item.shapeModel.collidesWith(otherItem.shapeModel, otherItem.type)
       if (collision) {
+        this.unregister(otherItem.itemId)
+        // TODO: FIX
+        otherItem.ref.current.style.visibility = 'hidden'
+
         this.notifyItemSubscribers(item, otherItem)
         return collision
       }

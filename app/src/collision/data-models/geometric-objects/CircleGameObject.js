@@ -4,7 +4,7 @@ import BaseGameObject from './BaseGameObject'
 /**
 * @private
 */
-function collisionStrategy(circle, item) {
+function collisionStrategy(circle, item, itemType) {
   let isColliding = null
   const itemCenter = {
     x: item.position.x + item.width / 2,
@@ -24,14 +24,14 @@ function collisionStrategy(circle, item) {
 
   if (Math.abs(diffY1) < item.height / 2) {
     if ((Math.abs(diffX1) < (item.width + circle.width) / 2) && (diffX1 < diffX2)) {
-      isColliding = { dir: 'R' }
+      isColliding = { side: 'R', itemType }
     } else if ((Math.abs(diffX1) < (item.width + circle.width) / 2) && (diffX1 > diffX2)) {
-      isColliding = { dir: 'L' }
+      isColliding = { side: 'L', itemType }
     }
   } else if (diffY1 < diffY2 && (item.position.y + item.height > circle.position.y) && (Math.abs(diffX1) <= item.width / 2)) {
-    isColliding = { dir: 'D' }
+    isColliding = { side: 'D', itemType }
   } else if (diffY1 > diffY2 && (item.position.y < circle.position.y + circle.height) && (Math.abs(diffX1) <= item.width / 2)) {
-    isColliding = { dir: 'U' }
+    isColliding = { side: 'U', itemType }
   }
 
   return isColliding
