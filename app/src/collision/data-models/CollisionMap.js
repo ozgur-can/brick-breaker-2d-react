@@ -67,7 +67,9 @@ export default class CollisionMap {
       if (collision) {
         this.unregister(otherItem.itemId)
         // TODO: FIX
-        otherItem.ref.current.style.visibility = 'hidden'
+        if (otherItem.type === 'brick') {
+          otherItem.ref.current.style.visibility = 'hidden'
+        }
 
         this.notifyItemSubscribers(item, otherItem)
         return collision
