@@ -9,6 +9,7 @@ import gameLoop from './gameLoop'
 import store from './store'
 import collisionMapFactory from './collision/data-models/collisionMapFactory'
 import CollisionProvider from './collision/CollisionProvider'
+import CSSVars from './constants'
 
 export const collisionMap = collisionMapFactory()
 
@@ -31,14 +32,18 @@ function App() {
             <Paddle
               itemId="paddle"
               ref={paddleRef}
-              size={{ width: 150, height: 50 }}
-              initialPosition={{ x: 160, y: 100 }}
+              size={{ width: CSSVars.paddleWidth, height: CSSVars.paddleHeight }}
+              initialPosition={{ x: -100, y: CSSVars.containerHeight - CSSVars.paddleHeight }}
             >
               <Ball
                 itemId="ball"
                 ref={ballRef}
-                size={{ width: 20, height: 20 }}
-                initialPosition={{ x: 10, y: 100 }}
+                size={{ width: CSSVars.ballHeight, height: CSSVars.ballHeight }}
+                initialPosition={{
+                  x: CSSVars.paddleWidth / 2,
+                  y: CSSVars.containerHeight - CSSVars.paddleHeight
+                   - CSSVars.ballHeight - CSSVars.ballBorderSize,
+                }}
               />
             </Paddle>
           </CollisionProvider>
