@@ -1,16 +1,22 @@
+/* eslint-disable max-len */
 import React from 'react'
 import { animated } from '@react-spring/web'
 import CSSVars from '../constants'
+import { collisionMap } from '../App'
+import { replaceCalc } from '../helpers'
 
-const Ball = React.forwardRef(({ styles, clickPosition, isClicked }, ref) => {
+const Ball = React.forwardRef((props, ref) => {
   const domRef = React.useRef(null)
   React.useImperativeHandle(ref, () => ({
     get domRef() {
       return domRef
     },
     move() {
-      domRef.current.style.top = `calc(${domRef.current.style.top} + ${CSSVars.ballSpeedY}px)`
-      domRef.current.style.left = `calc(${domRef.current.style.left} + ${CSSVars.ballSpeedX}px)`
+      domRef.current.style.top = `calc(${domRef.current.style.top} + ${CSSVars.ballSpeedY * 2}px)`
+      domRef.current.style.left = `calc(${domRef.current.style.left} + ${CSSVars.ballSpeedX * 2}px)`
+      const x = replaceCalc(domRef.current.style.left)
+      const y = replaceCalc(domRef.current.style.top)
+      collisionMap.updatePosition(props.itemId, { x, y })
     },
     changeYDir() {
       CSSVars.ballSpeedY *= -1
@@ -34,7 +40,7 @@ const Ball = React.forwardRef(({ styles, clickPosition, isClicked }, ref) => {
         borderRadius: '50%',
         border: `${CSSVars.ballBorderSize}px solid ${CSSVars.ballBorderColor}`,
         // ...styles,
-        ...(isClicked ? { left: clickPosition + CSSVars.paddleWidth / 2 } : { ...styles }),
+        ...(props.isClicked ? { left: props.clickPosition + CSSVars.paddleWidth / 2 } : { ...props.styles }),
       }}
     />
   )

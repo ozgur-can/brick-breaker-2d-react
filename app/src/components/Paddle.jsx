@@ -1,9 +1,11 @@
+/* eslint-disable max-len */
 import React, { useEffect, forwardRef } from 'react'
 import { useSpring, animated } from '@react-spring/web'
 import useMousePosition from '../hooks/useMousePosition'
 import CSSVars from '../constants'
+import { collisionMap } from '../App'
 
-const Paddle = forwardRef(({ children }, ref) => {
+const Paddle = forwardRef((props, ref) => {
   const { position, clickPosition, isClicked } = useMousePosition()
 
   const [styles, setStyles] = useSpring(() => ({
@@ -14,6 +16,7 @@ const Paddle = forwardRef(({ children }, ref) => {
     setStyles({
       x: position.x,
     })
+    collisionMap.updatePosition(props.itemId, { x: position.x, y: CSSVars.containerHeight - CSSVars.paddleHeight })
   }, [position && position.x])
   return (
     <>
@@ -29,8 +32,8 @@ const Paddle = forwardRef(({ children }, ref) => {
           borderRadius: 0,
         }}
       />
-      {React.cloneElement(children, {
-        styles, clickPosition, isClicked,
+      {React.cloneElement(props.children, {
+        styles, clickPosition, isClicked, position,
       })}
     </>
   )

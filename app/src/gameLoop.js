@@ -1,3 +1,4 @@
+import { collisionMap } from './App'
 import CSSVars from './constants'
 import { replaceCalc } from './helpers'
 
@@ -25,6 +26,23 @@ const gameLoop = (ballRef) => {
     ballRef.current.changeXDir()
   } else if (left >= CSSVars.containerWidth - CSSVars.ballHeight / 2) {
     ballRef.current.changeXDir()
+  }
+
+  if (collisionMap.isColliding) {
+    switch (collisionMap.isColliding.dir) {
+      case 'D':
+      case 'U':
+        ballRef.current.changeYDir()
+        break
+
+      case 'L':
+      case 'R':
+        ballRef.current.changeXDir()
+        break
+
+      default:
+        break
+    }
   }
 }
 
