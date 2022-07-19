@@ -1,11 +1,7 @@
 import { collisionMap } from './App'
 import CSSVars from './constants'
 import { replaceCalc } from './helpers'
-
-let click = false
-window.addEventListener('click', () => {
-  click = true
-}, { once: true })
+import { click } from './hooks/useStart'
 
 const gameLoop = (ballRef) => {
   if (click) {
@@ -19,7 +15,7 @@ const gameLoop = (ballRef) => {
     ballRef.current.changeYDir()
   } else if (top >= CSSVars.containerHeight - CSSVars.ballHeight) {
     // game end
-    click = false
+    // click = false
   }
 
   if (left - CSSVars.ballHeight / 2 < 0) {

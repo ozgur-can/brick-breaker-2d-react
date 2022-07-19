@@ -41,7 +41,7 @@ function CollisionProvider({ children }) {
     // return () => {}
   }, [])
 
-  return <>{children}</>
+  return children
 }
 
 export default CollisionProvider
