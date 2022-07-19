@@ -1,13 +1,13 @@
 /* eslint-disable max-len */
-import React from 'react'
+import React, { forwardRef, useImperativeHandle, useRef } from 'react'
 import { animated } from '@react-spring/web'
 import CSSVars from '../constants'
 import { collisionMap } from '../App'
 import { replaceCalc } from '../helpers'
 
-const Ball = React.forwardRef((props, ref) => {
-  const domRef = React.useRef(null)
-  React.useImperativeHandle(ref, () => ({
+const Ball = forwardRef((props, ref) => {
+  const domRef = useRef(null)
+  useImperativeHandle(ref, () => ({
     get domRef() {
       return domRef
     },

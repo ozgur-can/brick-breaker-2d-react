@@ -1,21 +1,45 @@
 /* eslint-disable max-len */
-import React, { forwardRef } from 'react'
-import { animated } from '@react-spring/web'
+import React, { forwardRef, useImperativeHandle, useRef } from 'react'
+import { animated, useSpring } from '@react-spring/web'
 import CSSVars from '../constants'
 
-const Brick = forwardRef((props, ref) => (
-  <animated.div
-    ref={ref}
-    style={{
-      position: 'absolute',
-      left: 200,
-      top: 100,
-      width: CSSVars.brickWidth,
-      height: CSSVars.brickHeight,
-      backgroundColor: 'darkslateblue',
-      borderRadius: 0,
-    }}
-  />
-))
+const Brick = forwardRef((props, ref) => {
+  const domRef = useRef(null)
+
+  const [anim, setAnim] = useSpring(() => ({
+    from: { transform: 'scale(1)' },
+    onRest: {
+      transform: () => {
+        domRef.current.style.display = 'none'
+        domRef.current.style.visibility = 'hidden'
+      },
+    },
+  }))
+
+  useImperativeHandle(ref, () => ({
+    get domRef() {
+      return domRef
+    },
+    hide() {
+      setAnim({ transform: 'scale(0)' })
+    },
+  }))
+
+  return (
+    <animated.div
+      ref={domRef}
+      style={{
+        position: 'absolute',
+        left: 200,
+        top: 100,
+        width: CSSVars.brickWidth,
+        height: CSSVars.brickHeight,
+        backgroundColor: 'darkslateblue',
+        borderRadius: 0,
+        transform: anim.transform,
+      }}
+    />
+  )
+})
 
 export default Brick
