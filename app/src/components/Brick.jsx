@@ -34,7 +34,7 @@ const Brick = forwardRef((props, ref) => {
         top: props.initialPosition.y,
         width: CSSVars.brickWidth,
         height: CSSVars.brickHeight,
-        backgroundColor: 'darkslateblue',
+        backgroundColor: '#FDEBF7',
         borderRadius: 0,
         transform: anim.transform,
       }}
