@@ -19,7 +19,7 @@ const GameScreen = () => {
 
   return (
     <CollisionProvider>
-      {BrickGroup(7)}
+      {BrickGroup(7, 4)}
       <Paddle
         itemId="paddle"
         ref={paddleRef}
