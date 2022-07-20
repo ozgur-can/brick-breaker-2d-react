@@ -17,8 +17,7 @@ const gameLoop = (ballRef) => {
     // game end
     click.status = false
     if (confirm('GAME OVER,\n\nSelect OK to Reload')) {
-      window.location.reload()
-      click.status = true
+      location.href = ''
     }
   }
 
