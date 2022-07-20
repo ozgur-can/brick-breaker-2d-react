@@ -10,17 +10,21 @@ const BrickGroup = (count) => {
 
   const initBricks = () => {
     const list = []
-    for (let i = 0; i < count; i += 1) list.push(React.useRef())
+    for (let i = 0; i < 4; i += 1) {
+      const rowList = []
+      for (let j = 0; j < count; j += 1) rowList.push(React.useRef())
+      list.push(rowList)
+    }
 
     const bricks = []
-    for (let j = 0; j < 4; j += 1) {
-      list.forEach((item, t) => {
+    for (let i = 0; i < 4; i += 1) {
+      for (let j = 0; j < count; j += 1) {
         bricks.push({
           id: shortid.generate(),
-          ref: item,
-          position: { x: (startX) + t * space, y: 100 + j * (CSSVars.brickHeight * 2) },
+          ref: list[i][j],
+          position: { x: (startX) + j * space, y: 100 + i * (CSSVars.brickHeight * 2) },
         })
-      })
+      }
     }
 
     return bricks
