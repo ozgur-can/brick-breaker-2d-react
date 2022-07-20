@@ -10,10 +10,10 @@ const BrickGroup = (count) => {
 
   const initBricks = () => {
     const list = []
-    for (let i = 0; i < count; i++) list.push(React.useRef())
+    for (let i = 0; i < count; i += 1) list.push(React.useRef())
 
     const bricks = []
-    for (let j = 0; j < 4; j++) {
+    for (let j = 0; j < 4; j += 1) {
       list.forEach((item, t) => {
         bricks.push({
           id: shortid.generate(),
