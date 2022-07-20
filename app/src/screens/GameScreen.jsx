@@ -3,12 +3,12 @@ import useAnimationFrame from 'use-animation-frame'
 import CollisionProvider from '../collision/CollisionProvider'
 import Ball from '../components/Ball'
 import Brick from '../components/Brick'
+import BrickGroup from '../components/BrickGroup'
 import Paddle from '../components/Paddle'
 import CSSVars from '../constants'
 import gameLoop from '../gameLoop'
 
 const GameScreen = () => {
-  const brickRef = React.useRef()
   const ballRef = React.useRef()
   const paddleRef = React.useRef()
 
@@ -20,13 +20,7 @@ const GameScreen = () => {
 
   return (
     <CollisionProvider>
-      <Brick
-        itemId="brick"
-        ref={brickRef}
-        size={{ width: CSSVars.brickWidth, height: CSSVars.brickHeight }}
-        type="brick"
-        initialPosition={{ x: 200, y: 100 }}
-      />
+      {BrickGroup(7)}
       <Paddle
         itemId="paddle"
         ref={paddleRef}

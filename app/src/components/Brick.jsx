@@ -30,8 +30,8 @@ const Brick = forwardRef((props, ref) => {
       ref={domRef}
       style={{
         position: 'absolute',
-        left: 200,
-        top: 100,
+        left: props.initialPosition.x,
+        top: props.initialPosition.y,
         width: CSSVars.brickWidth,
         height: CSSVars.brickHeight,
         backgroundColor: 'darkslateblue',

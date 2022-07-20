@@ -9,7 +9,6 @@ const StartGameButton = styled.button`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  zIndex: 100;
 `
 const WelcomeScreen = ({ setStart }) => (
   <StartGameButton onClick={(e) => {
