@@ -4,7 +4,7 @@ import { replaceCalc } from './helpers'
 import { click } from './hooks/useStart'
 
 const gameLoop = (ballRef) => {
-  if (click) {
+  if (click.status) {
     ballRef.current.move()
   }
 
@@ -15,7 +15,10 @@ const gameLoop = (ballRef) => {
     ballRef.current.changeYDir()
   } else if (top >= CSSVars.containerHeight - CSSVars.ballHeight) {
     // game end
-    // click = false
+    click.status = false
+    if (confirm('GAME OVER,\n\nSelect OK to Reload')) {
+      window.location.reload()
+    }
   }
 
   if (left - CSSVars.ballHeight / 2 < 0) {

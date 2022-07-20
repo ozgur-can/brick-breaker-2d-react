@@ -1,15 +1,15 @@
 import { useEffect } from 'react'
 
-let click = false
+const click = { status: false }
 const useStart = (isStarted) => {
   useEffect(() => {
     window.addEventListener('click', () => {
       if (isStarted) {
-        click = true
+        click.status = true
       }
     }, { once: true })
     return () => {
-      window.removeEventListener('click', () => { click = false })
+      window.removeEventListener('click', () => { click.status = false })
     }
   }, [isStarted])
 }
