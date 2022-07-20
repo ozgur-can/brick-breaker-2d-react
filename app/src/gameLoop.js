@@ -16,7 +16,7 @@ const gameLoop = (ballRef) => {
   } else if (top >= CSSVars.containerHeight - CSSVars.ballHeight) {
     // game end
     click.status = false
-    if (confirm('GAME OVER,\n\nSelect OK to Reload')) {
+    if (!click.status && confirm('GAME OVER,\n\nSelect OK to Reload')) {
       location.href = ''
       return
     }
